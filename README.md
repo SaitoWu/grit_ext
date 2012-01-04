@@ -1,6 +1,12 @@
 # GritExt
 
-TODO: Write a gem description
+grit_ext is a grit extension gem.
+
+1. auto transcoding `blob.data` to utf-8 encoding
+
+2. give blob a language method, show the blob's programming language
+
+3. give blob a encoding method, show the blob's text encoding.
 
 ## Installation
 
@@ -18,7 +24,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+With grit_ext
+
+```ruby
+[1] pry(main)> require'grit'
+=> true
+[2] pry(main)> require'grit_ext'
+=> true
+[3] pry(main)> repo = Grit::Repo.new("/Users/saito/Develop/grit_ext")
+=> #<Grit::Repo "/Users/saito/Develop/grit_ext/.git">
+[4] pry(main)> blob = repo.tree / 'Gemfile'
+=> #<Grit::Blob "015bb0f8c189aca154b2a54e511415e6723d104d">
+[5] pry(main)> blob.language
+=> "Ruby"
+[6] pry(main)> blob.encoding
+=> "ISO-8859-1"
+[7] pry(main)> blob.data
+=> "source 'https://rubygems.org'\n\n# Specify your gem's dependencies in grit_ext.gemspec\ngemspec\n"
+```
+
 
 ## Contributing
 
