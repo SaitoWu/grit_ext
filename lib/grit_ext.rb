@@ -6,6 +6,7 @@ require "grit_ext/version"
 require "grit_ext/raw_object"
 
 module GritExt
+  private
   def transcode(content)
     detection = CharlockHolmes::EncodingDetector.detect(content)
     if hash = detection
