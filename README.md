@@ -24,8 +24,6 @@ Or install it yourself as:
 
 ## Usage
 
-With grit_ext
-
 ```ruby
 [1] pry(main)> require'grit'
 => true
@@ -41,6 +39,12 @@ With grit_ext
 => "ISO-8859-1"
 [7] pry(main)> blob.data
 => "source 'https://rubygems.org'\n\n# Specify your gem's dependencies in grit_ext.gemspec\ngemspec\n"
+[7] pry(main)> blob.text?
+=> true
+[7] pry(main)> blob.image?
+=> false
+[7] pry(main)> blob.binary?
+=> false
 ```
 
 
