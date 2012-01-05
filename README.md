@@ -39,11 +39,11 @@ Or install it yourself as:
 => "ISO-8859-1"
 [7] pry(main)> blob.data
 => "source 'https://rubygems.org'\n\n# Specify your gem's dependencies in grit_ext.gemspec\ngemspec\n"
-[7] pry(main)> blob.text?
+[8] pry(main)> blob.text?
 => true
-[7] pry(main)> blob.image?
+[9] pry(main)> blob.image?
 => false
-[7] pry(main)> blob.binary?
+[10] pry(main)> blob.binary?
 => false
 ```
 
