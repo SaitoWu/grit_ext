@@ -1,18 +1,36 @@
 require "rubygems"
 require "charlock_holmes"
-require "language_sniffer"
 require "grit_ext/blob"
 require "grit_ext/version"
 require "grit_ext/raw_object"
 
 module GritExt
+
   private
   def transcode(content)
-    detection = CharlockHolmes::EncodingDetector.detect(content)
-    if hash = detection
-     content = CharlockHolmes::Converter.convert(content, hash[:encoding], 'UTF-8') if hash[:encoding]
+    return nil unless message.respond_to? :force_encoding
+
+    message.force_encoding("UTF-8")
+    # return message if message type is binary
+    detect = CharlockHolmes::EncodingDetector.detect(message)
+    return message if detect[:type] == :binary
+
+    # if message is utf-8 encoding, just return it
+    return message if message.valid_encoding?
+
+    # if message is not utf-8 encoding, convert it
+    if detect[:encoding]
+      message.force_encoding(detect[:encoding])
+      message.encode!("UTF-8", detect[:encoding], undef: :replace, replace: "", invalid: :replace)
     end
-    content
+
+    # ensure message encoding is utf8
+    message.valid_encoding? ? message : raise
+
+    # Prevent app from crash cause of encoding errors
+  rescue
+    encoding = detect ? detect[:encoding] : "unknown"
+    "--broken encoding: #{encoding}"
   end
 end
 

@@ -15,6 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = GritExt::VERSION
 
-  gem.add_dependency("charlock_holmes", "~> 0.6.8")
-  gem.add_dependency("language_sniffer", "~> 1.0.1")
+  gem.add_dependency("charlock_holmes", "~> 0.6.9")
 end

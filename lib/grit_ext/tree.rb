@@ -1,4 +1,4 @@
-Grit::Blob.class_eval do
+Grit::Tree.class_eval do
 
   alias_method :orig_name, :name
   alias_method :orig_data, :data
