@@ -1,22 +1,23 @@
-require "rubygems"
+require "cgi"
 require "charlock_holmes"
-require "grit_ext/blob"
 require "grit_ext/version"
-require "grit_ext/raw_object"
+require "grit_ext/actor"
+require "grit_ext/blob"
+require "grit_ext/commit"
+require "grit_ext/tree"
 
 module GritExt
 
   private
-  def transcode(content)
+  def transcode(message)
     return nil unless message.respond_to? :force_encoding
-
-    message.force_encoding("UTF-8")
-    # return message if message type is binary
-    detect = CharlockHolmes::EncodingDetector.detect(message)
-    return message if detect[:type] == :binary
 
     # if message is utf-8 encoding, just return it
     return message if message.valid_encoding?
+
+    # return message if message type is binary
+    detect = CharlockHolmes::EncodingDetector.detect(message)
+    return message if detect[:type] == :binary
 
     # if message is not utf-8 encoding, convert it
     if detect[:encoding]
@@ -31,6 +32,10 @@ module GritExt
   rescue
     encoding = detect ? detect[:encoding] : "unknown"
     "--broken encoding: #{encoding}"
+  end
+
+  def escape_path(path)
+    CGI.escape path
   end
 end
 
