@@ -1,18 +1,14 @@
-Grit::Blob.class_eval do
-  include ::GritExt
+module Grit
+  class Blob
 
-  alias_method :orig_name, :name
-  alias_method :orig_data, :data
+    alias_method :orig_data, :data
 
-  def name
-    transcode(orig_name)
-  end
+    def path
+      GritExt.escape_path(orig_name)
+    end
 
-  def path
-    escape_path(orig_name)
-  end
-
-  def data
-    transcode(orig_data)
+    def data
+      GritExt.transcode(orig_data)
+    end
   end
 end

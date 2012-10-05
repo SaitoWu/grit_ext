@@ -1,9 +1,10 @@
-Grit::Tag.class_eval do
-  include ::GritExt
+module Grit
+  class Tag
 
-  alias_method :orig_message, :message
+    alias_method :orig_message, :message
 
-  def message
-    transcode(orig_message)
+    def message
+      GritExt.transcode(orig_message)
+    end
   end
 end

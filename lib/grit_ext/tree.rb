@@ -1,21 +1,18 @@
-Grit::Tree.class_eval do
-  include ::GritExt
+module Grit
+  class Tree
 
-  alias_method :orig_name, :name
+    alias_method :orig_name, :name
+    alias_method :orig_view, :/
 
-  def name
-    transcode(orig_name)
-  end
+    def path
+      if orig_name
+        GritExt.escape_path(orig_name)
+      end
+    end
 
-  def path
-    escape_path(orig_name)
-  end
-
-  def /(file)
-    if file =~ /\//
-      file.split("/").inject(self) { |acc, x| acc/x } rescue nil
-    else
-      self.contents.find { |c| c.name == file.dup.force_encoding("binary") }
+    def /(file)
+      file = file.dup.force_encoding("binary")
+      orig_view(file)
     end
   end
 end

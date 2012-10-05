@@ -1,9 +1,10 @@
-Grit::Actor.class_eval do
-  include ::GritExt
+module Grit
+  class Actor
 
-  alias_method :orig_name, :name
+    alias_method :orig_name, :name
 
-  def name
-    transcode(orig_name)
+    def name
+      GritExt.transcode(orig_name)
+    end
   end
 end
