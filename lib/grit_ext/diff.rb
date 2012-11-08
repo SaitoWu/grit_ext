@@ -8,5 +8,9 @@ module Grit
     def new_path
       GritExt.transcode @b_path
     end
+
+    def diff
+      GritExt.transcode @diff
+    end
   end
 end

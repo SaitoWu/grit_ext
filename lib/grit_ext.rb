@@ -3,6 +3,7 @@ require "grit_ext/actor"
 require "grit_ext/blob"
 require "grit_ext/commit"
 require "grit_ext/tree"
+require "grit_ext/diff"
 require "grit_ext/version"
 
 module GritExt

@@ -11,5 +11,16 @@ module Grit
     def data
       GritExt.transcode old_data
     end
+
+    class << self
+      alias_method :old_blame, :blame
+
+      def blame(repo, commit, file)
+        old_blame(repo, commit, file).map do |b,lines|
+          [b, GritExt.transcode(lines.join('\n')).split('\n')]
+        end
+      end
+    end
+
   end
 end
