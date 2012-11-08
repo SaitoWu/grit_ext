@@ -5,11 +5,11 @@ module Grit
     alias_method :old_data, :data
 
     def name
-      GritExt.transcode old_name
+      GritExt.encode! old_name
     end
 
     def data
-      GritExt.transcode old_data
+      GritExt.encode! old_data
     end
 
     class << self
@@ -17,7 +17,7 @@ module Grit
 
       def blame(repo, commit, file)
         old_blame(repo, commit, file).map do |b,lines|
-          [b, GritExt.transcode(lines.join('\n')).split('\n')]
+          [b, GritExt.encode!(lines.join('\n')).split('\n')]
         end
       end
     end

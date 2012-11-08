@@ -4,7 +4,7 @@ module Grit
     alias_method :old_name, :name
 
     def name
-      GritExt.transcode old_name
+      GritExt.encode! old_name
     end
   end
 end

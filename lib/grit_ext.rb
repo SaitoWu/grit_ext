@@ -9,7 +9,7 @@ require "grit_ext/version"
 module GritExt
   extend self
 
-  def transcode(message)
+  def encode!(message)
     return nil unless message.respond_to? :force_encoding
 
     # if message is utf-8 encoding, just return it
