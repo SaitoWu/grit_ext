@@ -5,11 +5,11 @@ module Grit
     alias_method :old_data, :data
 
     def name
-      GritExt.transcode(old_name)
+      GritExt.transcode old_name
     end
 
     def data
-      GritExt.transcode(old_data)
+      GritExt.transcode old_data
     end
   end
 end
