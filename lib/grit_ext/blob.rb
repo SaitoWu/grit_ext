@@ -1,14 +1,15 @@
 module Grit
   class Blob
 
-    alias_method :orig_data, :data
+    alias_method :old_name, :name
+    alias_method :old_data, :data
 
-    def path
-      GritExt.escape_path(orig_name)
+    def name
+      old_name.force_encoding("UTF-8")
     end
 
     def data
-      GritExt.transcode(orig_data)
+      GritExt.transcode(old_data)
     end
   end
 end

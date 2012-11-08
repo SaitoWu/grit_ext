@@ -1,10 +1,10 @@
 module Grit
   class Tag
 
-    alias_method :orig_message, :message
+    alias_method :old_message, :message
 
     def message
-      GritExt.transcode(orig_message)
+      GritExt.transcode(old_message)
     end
   end
 end

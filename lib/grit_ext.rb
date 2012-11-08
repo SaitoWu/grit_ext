@@ -1,5 +1,3 @@
-require "rubygems"
-require "cgi"
 require "charlock_holmes"
 require "grit_ext/actor"
 require "grit_ext/blob"
@@ -34,9 +32,5 @@ module GritExt
   rescue
     encoding = detect ? detect[:encoding] : "unknown"
     "--broken encoding: #{encoding}"
-  end
-
-  def escape_path(path)
-    CGI.escape path
   end
 end

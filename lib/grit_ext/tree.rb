@@ -1,18 +1,10 @@
 module Grit
   class Tree
 
-    alias_method :orig_name, :name
-    alias_method :orig_view, :/
+    alias_method :old_name, :name
 
-    def path
-      if orig_name
-        GritExt.escape_path(orig_name)
-      end
-    end
-
-    def /(file)
-      file = file.dup.force_encoding("binary")
-      orig_view(file)
+    def name
+      old_name.force_encoding("UTF-8")
     end
   end
 end
