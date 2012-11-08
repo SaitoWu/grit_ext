@@ -5,7 +5,7 @@ module Grit
     alias_method :old_data, :data
 
     def name
-      old_name.force_encoding("UTF-8")
+      GritExt.transcode(old_name)
     end
 
     def data

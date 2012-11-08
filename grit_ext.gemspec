@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.name          = "grit_ext"
   gem.require_paths = ["lib"]
-  gem.version       = GritExt::VERSION
+  gem.version       = GritExt.version
 
   gem.add_dependency("charlock_holmes", "~> 0.6.9")
 end

@@ -1,3 +1,7 @@
 module GritExt
-  VERSION = "0.5.0"
+  extend self
+
+  def version
+    "0.5.0"
+  end
 end
