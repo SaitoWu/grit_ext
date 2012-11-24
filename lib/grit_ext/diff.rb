@@ -10,7 +10,14 @@ module Grit
     end
 
     def diff
-      GritExt.encode! @diff
+      lines = @diff.lines.to_a
+
+      # path encoding is dependent on environment
+      path = GritExt.encode! lines.shift(2).join
+      # diff body encoding is dependent on file encoding
+      body = GritExt.encode! lines.join
+
+      @diff = path + body
     end
   end
 end
