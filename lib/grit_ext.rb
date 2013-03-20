@@ -18,7 +18,7 @@ module GritExt
 
     # return message if message type is binary
     detect = CharlockHolmes::EncodingDetector.detect(message)
-    return message if detect && detect[:type] == :binary
+    return message.force_encoding("BINARY") if detect && detect[:type] == :binary
 
     # encoding message to detect encoding
     if detect && detect[:encoding]

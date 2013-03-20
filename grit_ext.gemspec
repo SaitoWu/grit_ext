@@ -16,4 +16,9 @@ Gem::Specification.new do |gem|
   gem.version       = GritExt.version
 
   gem.add_dependency("charlock_holmes", "~> 0.6.9")
+
+  gem.add_development_dependency("rspec", "~> 2.11")
+  gem.add_development_dependency("grit", "~> 2.5")
+  gem.add_development_dependency("rake")
+  gem.add_development_dependency("pry")
 end
