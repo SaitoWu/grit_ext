@@ -4,9 +4,9 @@ require File.expand_path('../lib/grit_ext/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Saito"]
   gem.email         = ["saitowu@gmail.com"]
-  gem.description   = %q{the grit's extension}
-  gem.summary       = %q{gives grit utf-8 support and some misc enhancement}
-  gem.homepage      = "http://saito.im"
+  gem.description   = %q{the grit's utf-8 support}
+  gem.summary       = %q{gives grit utf-8 support}
+  gem.homepage      = "https://github.com/saitowu/grit_ext"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
